@@ -1,0 +1,72 @@
+body {
+    background-image: linear-gradient(to right, rgb(200, 200, 200), rgb(220, 220, 220));
+    overflow: hidden; /* Hide scrollbars */
+    cursor: none;     /* Hide mouse */
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%; z-index: -1; 
+    margin: 0; padding: 0; border: 0;
+}
+
+.home{
+    width : 100vw;
+    height : 100vh;
+}
+  
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    padding: 5%;
+}
+
+.logo {
+    height: 50px;
+    padding-right: 10px;
+}
+
+.brand-name {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.message-1 {
+    text-align: center;
+    font-size: 2vw;
+    padding: 5%;
+}
+
+.message-2 {
+    text-align: center;
+    font-size: 2vw;
+    padding: 5%;
+}
+
+.loader {
+    border: 10px solid white;
+    border-radius: 50%;
+    border-top: 10px solid darkblue;
+    border-bottom: 10px solid darkblue;
+    width: 0.3vw;
+    height: 0.3vw;
+    margin: auto;
+    padding: 0.15vw;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+}
+  
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+  
