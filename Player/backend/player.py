@@ -5,9 +5,9 @@ from selenium.webdriver.chrome.options import Options as ChromeOptions
 from modules.server import Server
 
 sys.tracebacklimit = 0
-os.environ["FRONTEND_DIR"] = "C:/Users/hp/Desktop/Player/frontend/"
-os.environ["BACKEND_DIR"] = "C:/Users/hp/Desktop/Player/backend/"
-os.environ["REMOTE_SERVER"] = "http://localhost:8000/"
+os.environ["FRONTEND_DIR"] = "/home/pi/standard_display/Player/frontend/"
+os.environ["BACKEND_DIR"] = "/home/pi/standard_display/Player/backend/"
+os.environ["REMOTE_SERVER"] = "http://192.168.1.88:8000/"
 WELCOME_HTML_PATH  = os.getenv("FRONTEND_DIR") + "welcome.html"
 INDEX_HTML_PATH    = os.getenv("FRONTEND_DIR") + "index.html"
 
@@ -49,15 +49,15 @@ if __name__ == "__main__":
     service = ChromeService()
 
     # Start Chromium
-    #driver = webdriver.Chrome(service=service, options=options)
+    driver = webdriver.Chrome(service=service, options=options)
 
     if go_to_index() :
         # Navigate to index page
-        #driver.get("file:///"+INDEX_HTML_PATH)
+        driver.get("file://"+INDEX_HTML_PATH)
         pass
     else :
         # Navigate to welcome page
-        #driver.get("file:///"+WELCOME_HTML_PATH)
+        driver.get("file://"+WELCOME_HTML_PATH)
         pass
 
 

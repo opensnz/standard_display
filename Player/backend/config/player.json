@@ -1,13 +1,13 @@
 {
     "type": "player",
     "player": {
-        "uuid": "7a5cb053-8876-41da-a5e9-beada41e9351",
-        "name": "TestPlayer",
-        "description": "Desc",
-        "tags": "['player', 'iot', 'test']",
+        "uuid": "5b57810f-2b7e-4e42-ad25-1965f7bc0860",
+        "name": "Player-2",
+        "description": "Test Player 2",
+        "tags": "['player', 'iot']",
         "activated": true,
-        "created_at": "2023-01-26T10:53:42.406731Z",
-        "updated_at": "2023-01-26T10:54:38.460654Z",
-        "passcode": 454036
+        "created_at": "2023-02-01T14:38:30.893928Z",
+        "updated_at": "2023-02-01T14:40:48.325025Z",
+        "passcode": 299005
     }
 }
