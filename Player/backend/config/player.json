@@ -1,0 +1,13 @@
+{
+    "type": "player",
+    "player": {
+        "uuid": "5b57810f-2b7e-4e42-ad25-1965f7bc0860",
+        "name": "Player-2",
+        "description": "Test Player 2",
+        "tags": "['player', 'iot']",
+        "activated": true,
+        "created_at": "2023-02-01T14:38:30.893928Z",
+        "updated_at": "2023-02-01T14:40:48.325025Z",
+        "passcode": 299005
+    }
+}
