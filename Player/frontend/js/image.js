@@ -1,57 +1,18 @@
-<<<<<<< HEAD
-const BODY_CONTENT = `<div id="home" class="home">
-                        <div id="slider-container" class="slider-container">
-                            <div id="slide-number" class="slide-number"></div>
-                        </div>
-                        <div class="slider-controls">
-                            <span id="prev" class="prev">Previous</span>
-                            <span id="indicators" class="indicators"></span>
-                            <span id="next" class="next">Next</span>
-                        </div>
-                      </div>`
-
-var imageContainer;
-var allImageElement = [];
-var allImageSources = [];
-var currentImageIndex = 0;
-
-// Get Slider Items | Array.form [ES6 Feature]
-var sliderImages;
-
-// Get Number Of Slides
-var slidesCount;
-
-// Set Current Slide
-var currentSlide;
-
-// Slide Number Element
-var slideNumberElement;
-
-// Previous and Next Buttons
-var nextButton;
-var prevButton;
-
-
-// Create The Main UL Element
-var paginationElement ;
-var paginationCreatedUl;
-var paginationsBullets;
-
-
-
-
-=======
-const BODY_CONTENT_IMAGE = `<div id="home" class="home">
-                                <div id="image-container" class="image-container">
-                                
-                                </div>
-                            </div>`
+const BODY_CONTENT = `  <div id="home" class="home">
+                            <div id="slider-container" class="slider-container">
+                                <div id="slide-number" class="slide-number"></div>
+                            </div>
+                            <div class="slider-controls">
+                                <span id="prev" class="prev">Previous</span>
+                                <span id="indicators" class="indicators"></span>
+                                <span id="next" class="next">Next</span>
+                            </div>
+                        </div>`
 var imageContainer;
 var allImages = [];
 var imageSources = [];
 var currentImageIndex = 0;
 
->>>>>>> d69598b6aa0b47cce1dc3e58a2ceae0f7f9615b1
 // Launch main function
 $(document).ready(() => {
     image();
@@ -61,10 +22,7 @@ $(document).ready(() => {
 function image()
 {
     // listen for the event
-<<<<<<< HEAD
     
-=======
->>>>>>> d69598b6aa0b47cce1dc3e58a2ceae0f7f9615b1
     document.addEventListener('image', function (event) {
         message = event.detail;
         imageStart(message[message.type]);
@@ -74,7 +32,6 @@ function image()
 
 function imageStart(sources)
 {
-<<<<<<< HEAD
     document.body.innerHTML = BODY_CONTENT;    
     imageContainer = document.getElementById('slider-container');
     allImageSources = sources;
@@ -159,20 +116,10 @@ function imageStart(sources)
     theChecker();
 
     setInterval("nextSlide(1)", 8000);
-=======
-    document.body.innerHTML = BODY_CONTENT_IMAGE;
-    imageContainer = document.getElementById('image-container');
-    allSources = sources;
-
-    setInterval(function(){
-    
-    }, 100000);
->>>>>>> d69598b6aa0b47cce1dc3e58a2ceae0f7f9615b1
 }
 
 
 
-<<<<<<< HEAD
 
 // Next Slide Function
 function nextSlide() {
@@ -271,5 +218,3 @@ function removeAllActive() {
     });
 
 }
-=======
->>>>>>> d69598b6aa0b47cce1dc3e58a2ceae0f7f9615b1
