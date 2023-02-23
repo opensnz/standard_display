@@ -12,8 +12,8 @@ function localConnection()
 {
     localSocket = new WebSocket(BACKEND_LOCAL_SERVER);
     injectJSFile("./js/connectionHandler.js")
-    injectJSFile("./js/playlist.js");
-    injectCSSFile("./css/playlist.css");
+    //injectJSFile("./js/playlist.js");
+    //injectCSSFile("./css/playlist.css");
     registerLocalEventHandlers();
 }
 

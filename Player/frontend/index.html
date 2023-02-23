@@ -1,15 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Player</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
-        <script type="text/javascript" src="./js/jquery-3.6.3.min.js"></script>
-        <script type="text/javascript" src="./js/injection.js"></script>
-        <script type="text/javascript" src="./js/localConnection.js"></script>
-        <script type="text/javascript" src="./js/remoteConnection.js"></script>
-    </head>
-    <body>
-        <div id="home" class="home"></div>
-    </body>
+<html>
+<head>
+    <title>JavaScript Slideshow Demo</title>
+</head>
+
+<body>
+    <div>
+        <img id="image1" />
+    </div>
+
+    <script>
+        var imgArray = [
+            'C:\Users\Dev1\Desktop\Repository\standard_display\Player\frontend\image1.jpg',
+            'C:\Users\Dev1\Desktop\Repository\standard_display\Player\frontend\image2.jpg',
+            'C:\Users\Dev1\Desktop\Repository\standard_display\Player\frontend\image3.jpg'
+        ];
+        var curIndex = 0;
+        var imgDuration = 5000;
+
+        function slideShow() {
+            document.getElementById('image1').src = imgArray[curIndex];
+            curIndex++;
+            if (curIndex == imgArray.length) { curIndex = 0; }
+            setTimeout("slideShow()", imgDuration);
+        }
+        slideShow();
+    </script>
+</body>
 </html>

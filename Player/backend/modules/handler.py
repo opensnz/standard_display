@@ -17,6 +17,7 @@ class Handler():
             "screenshot": Handler._screenshot,
             "reboot": Handler._reboot,
             "power": Handler._power,
+            "image": Handler._image,
         }
 
 
@@ -92,4 +93,8 @@ class Handler():
         print("power Message")
         #cmd = shlex.split("sudo shutdown -h now")
         #subprocess.call(cmd)
+        return json.dumps(data)
+    
+    def _image(self, data : dict) -> str:
+        print("Launch image slider")
         return json.dumps(data)

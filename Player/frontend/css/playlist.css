@@ -1,4 +1,5 @@
 
+
 body {
     overflow: hidden; /* Hide scrollbars */
     cursor: none;     /* Hide mouse */
@@ -49,3 +50,5 @@ video {
     opacity: 1;
     transition: opacity 1s linear;
 }
+
+

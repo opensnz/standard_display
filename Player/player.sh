@@ -31,3 +31,13 @@ sudo systemctl daemon-reload
 sudo systemctl enable player.service
 sudo systemctl start player.service
 echo -e "Finished\n"
+
+
+sudo cp ./audio.service /lib/systemd/system/audio.service
+echo  "Start Service audio..."
+sudo chmod 644 /lib/systemd/system/audio.service
+chmod +x /home/pi/standard_display/Player/backend/player.py
+sudo systemctl daemon-reload
+sudo systemctl enable audio.service
+sudo systemctl start audio.service
+echo -e "Finished\n"

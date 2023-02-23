@@ -1,7 +1,9 @@
 [Unit]
 Description=Chromium Kiosk
+After=syslog.target network.target sound.target
 Wants=graphical.target
 After=graphical.target
+
 
 [Service]
 Environment=DISPLAY=:0.0
@@ -13,4 +15,4 @@ User=pi
 Group=pi
 
 [Install]
-WantedBy=graphical.target
+WantedBy=default.target

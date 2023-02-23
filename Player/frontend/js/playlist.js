@@ -17,6 +17,7 @@ $(document).ready(() => {
 function playlist()
 {
     // listen for the event
+
     document.addEventListener('playlist', function (event) {
         message = event.detail;
         playlistStart(message[message.type]);
@@ -26,8 +27,8 @@ function playlist()
 
 function playlistStart(sources)
 {
-    document.body.innerHTML = BODY_CONTENT;
-    videoContainer = document.getElementById('video-container');
+    document.body.innerHTML = BODY_CONTENT;    
+    videoContainer = document.getElementById("video-container");
     allSources = sources;
     sources.forEach(function(src, index) {
         var videoElement = document.createElement('video');
