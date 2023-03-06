@@ -43,7 +43,7 @@ function handleMessagePlayer(message)
 {
     // dispatch 'player' event to connect to remote server
     document.dispatchEvent(new CustomEvent('player', {detail:message}));
-
+    console.log(message);
     if(message.player.activated === false){
         // dispatch 'passcode' event to show passcode to client
         document.dispatchEvent(new CustomEvent('passcode', {detail:message}));
@@ -67,23 +67,30 @@ function handleMessagePlayer(message)
         //     }
         // ]
         // }));
-        localSocket.send(JSON.stringify({"type":"image", "image":
+        // localSocket.send(JSON.stringify({"type":"image", "image":
 
-        [
-            "C:/Users/Dev1/Desktop/Repository/standard_display/Player/frontend/image1.jpg",
-            "C:/Users/Dev1/Desktop/Repository/standard_display/Player/frontend/image2.jpg",
-            "C:/Users/Dev1/Desktop/Repository/standard_display/Player/frontend/image3.jpg",
-        ]
+        // [
+        //     "C:/Users/Dev1/Desktop/Repository/standard_display/Player/frontend/image1.jpg",
+        //     "C:/Users/Dev1/Desktop/Repository/standard_display/Player/frontend/image2.jpg",
+        //     "C:/Users/Dev1/Desktop/Repository/standard_display/Player/frontend/image3.jpg",
+        //     "C:/Users/Dev1/Desktop/Repository/standard_display/Player/frontend/image4.jpg"
+        // ]
 
-        }));
+        //}));
     }
 }
 
 
 function handleMessagePlaylist(message)
 {
+    injectJSFile("./js/playlist.js");
+    injectCSSFile("./css/playlist.css");
     // dispatch 'player' event to launch the playlist
-    document.dispatchEvent(new CustomEvent('playlist', {detail:message}));
+    setTimeout(
+        function(){
+            document.dispatchEvent(new CustomEvent('playlist', {detail:message}));
+        }, 100
+    )
 }
 
 function handleMessageActivation(message)
@@ -95,8 +102,13 @@ function handleMessageActivation(message)
 
 function handleMessageImage(message)
 {
+
     injectJSFile("./js/image.js");
     injectCSSFile("./css/image.css");
     // dispatch 'image' event to launch the slider
-    document.dispatchEvent(new CustomEvent('image', {detail:message}));
+    setTimeout(
+        function(){
+            document.dispatchEvent(new CustomEvent('image', {detail:message}));
+        }, 100
+    )
 }

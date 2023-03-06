@@ -5,9 +5,11 @@ from selenium.webdriver.chrome.options import Options as ChromeOptions
 from modules.server import Server
 
 sys.tracebacklimit = 0
-os.environ["FRONTEND_DIR"] = "/home/pi/standard_display/Player/frontend/"
-os.environ["BACKEND_DIR"] = "/home/pi/standard_display/Player/backend/"
-os.environ["REMOTE_SERVER"] = "http://192.168.1.88:8000/"
+# os.environ["FRONTEND_DIR"] = "/home/pi/standard_display/Player/frontend/"
+# os.environ["BACKEND_DIR"] = "/home/pi/standard_display/Player/backend/"
+os.environ["FRONTEND_DIR"] = "C:/Users/Dev1/Desktop/Repository/standard_display/Player/frontend/"
+os.environ["BACKEND_DIR"] = "C:/Users/Dev1/Desktop/Repository/standard_display/Player/backend/"
+os.environ["REMOTE_SERVER"] = "http://192.168.1.99:8000/"
 WELCOME_HTML_PATH  = os.getenv("FRONTEND_DIR") + "welcome.html"
 INDEX_HTML_PATH    = os.getenv("FRONTEND_DIR") + "index.html"
 
@@ -49,22 +51,22 @@ if __name__ == "__main__":
     service = ChromeService()
 
     # Start Chromium
-    driver = webdriver.Chrome(service=service, options=options)
+    #driver = webdriver.Chrome(service=service, options=options)
 
     if go_to_index() :
         # Navigate to index page
-        driver.get("file://"+INDEX_HTML_PATH)
+        #driver.get("file://"+INDEX_HTML_PATH)
         pass
     else :
         # Navigate to welcome page
-        driver.get("file://"+WELCOME_HTML_PATH)
+        #driver.get("file://"+WELCOME_HTML_PATH)
         pass
 
 
     signal.signal(signal.SIGINT, handler)
 
 
-    server = Server(host="127.0.0.1", port=8080)
+    server = Server(host="localhost", port=8080)
     server.run()
 
 

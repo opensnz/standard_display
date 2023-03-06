@@ -22,3 +22,15 @@ function injectCSSFile(filePath)
 }
 
 
+function removeJSFile(filePath)
+{
+
+}
+
+function removeCSSFile(filePath)
+{
+
+
+}
+
+

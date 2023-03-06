@@ -20,7 +20,7 @@ pip install pillow
 ########## Add this line
 #avoid_warnings=1
 
-
+ 
 ############# Player Service Installation ############
 
 sudo cp ./player.service /lib/systemd/system/player.service

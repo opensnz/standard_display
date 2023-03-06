@@ -1,7 +1,7 @@
 body {
     background-image: linear-gradient(to right, rgb(200, 200, 200), rgb(220, 220, 220));
     overflow: hidden; /* Hide scrollbars */
-    cursor: none;     /* Hide mouse */
+    /*cursor: none;     /* Hide mouse */
     position: fixed; top: 0; left: 0;
     width: 100%; height: 100%; z-index: -1; 
     margin: 0; padding: 0; border: 0;

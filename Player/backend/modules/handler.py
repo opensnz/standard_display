@@ -96,5 +96,9 @@ class Handler():
         return json.dumps(data)
     
     def _image(self, data : dict) -> str:
-        print("Launch image slider")
-        return json.dumps(data)
+        duration = data["duration"]
+        response = download_image(data)
+        response["duration"] = duration
+        path = os.getenv('BACKEND_DIR') + "config/image.json"
+        open(path, 'w').write(json.dumps(response, indent=4))
+        return json.dumps(response)

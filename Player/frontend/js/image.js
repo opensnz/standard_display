@@ -1,17 +1,42 @@
-const BODY_CONTENT = `  <div id="home" class="home">
+
+const BODY_CONTENT =   `<div id="home" class="home">
                             <div id="slider-container" class="slider-container">
                                 <div id="slide-number" class="slide-number"></div>
                             </div>
-                            <div class="slider-controls">
-                                <span id="prev" class="prev">Previous</span>
-                                <span id="indicators" class="indicators"></span>
-                                <span id="next" class="next">Next</span>
-                            </div>
+                            <span id="prev" class="prev"></span>
+                            <span id="indicators" class="indicators"></span>
+                            <span id="next" class="next"></span>  
                         </div>`
+
+// global variables
+
 var imageContainer;
 var allImages = [];
-var imageSources = [];
+var allImageSources = [];
 var currentImageIndex = 0;
+var duration = 2000;
+var durationHandler = 0;
+var j = 1;
+// Get Slider Items | Array.form [ES6 Feature]
+var sliderImages;
+
+// Get Number Of Slides
+var slidesCount;
+
+// Set Current Slide
+var currentSlide;
+
+// Slide Number Element
+var slideNumberElement;
+
+// Previous and Next Buttons
+var nextButton;
+var prevButton;
+// Get The New Created UL
+var paginationCreatedUl  ;
+
+// Get Pagination Items | Array.form [ES6 Feature]
+var paginationsBullets ;
 
 // Launch main function
 $(document).ready(() => {
@@ -25,11 +50,19 @@ function image()
     
     document.addEventListener('image', function (event) {
         message = event.detail;
+        if(durationHandler != 0)
+        {
+            clearInterval(durationHandler);
+            console.log("clearInterval");
+        }
+        duration = message["duration"];
         imageStart(message[message.type]);
     }, false);
+
 }
 
 
+                
 function imageStart(sources)
 {
     document.body.innerHTML = BODY_CONTENT;    
@@ -41,9 +74,8 @@ function imageStart(sources)
         imageElement.decoding = "async";
         imageElement.src = src;
         imageContainer.appendChild(imageElement);
-        
+    
     });
-
 
 
     // Get Slider Items | Array.form [ES6 Feature]
@@ -72,20 +104,18 @@ function imageStart(sources)
     // Set ID On Created Ul Element
     paginationElement.setAttribute('id', 'pagination-ul');
 
-
     // Create List Items Based On Slides Count
     for (var i = 1; i <= slidesCount; i++) {
 
         // Create The LI
-        var paginationItem = document.createElement('li');
+        var paginationItem = document.createElement('li-1');
 
         // Set Custom Attribute
-        paginationItem.setAttribute('data-index', i);
+        //paginationItem.setAttribute('data-index', i);
 
         // Set Item Content
-        paginationItem.appendChild(document.createTextNode(i));
-
-        // Append Items to The Main Ul List
+        //paginationItem.appendChild(document.createTextNode(i));
+        
         paginationElement.appendChild(paginationItem);
 
     }
@@ -100,7 +130,7 @@ function imageStart(sources)
     paginationsBullets = Array.from(document.querySelectorAll('#pagination-ul li'));
 
     // Loop Through All Bullets Items
-    for (var i = 0; i < paginationsBullets.length; i++) {
+    for( var i = 0 ;i < paginationsBullets.length; i++ ) {
 
         paginationsBullets[i].onclick = function () {
 
@@ -114,18 +144,25 @@ function imageStart(sources)
 
     // Trigger The Checker Function
     theChecker();
+    durationHandler = setInterval(nextSlide, duration);
 
-    setInterval("nextSlide(1)", 8000);
+
 }
 
+    
+
+
+
+
+// functions
 
 
 
 // Next Slide Function
 function nextSlide() {
-
+    //console.log("duration", duration);
     if (nextButton.classList.contains('disabled')) {
-        setInterval("nextSlide(1)", 1000);
+        //setInterval("nextSlide(1)", 2000);
         // Do Nothing
         return false;
 
@@ -136,9 +173,9 @@ function nextSlide() {
         theChecker();
 
     }
-
 }
-  
+
+
 // Previous Slide Function
 function prevSlide() {
 
@@ -156,12 +193,12 @@ function prevSlide() {
     }
 
 }
-  
+
 // Create The Checker Function
 function theChecker() {
 
     // Set The Slide Number
-    slideNumberElement.textContent = 'Slide #' + (currentSlide) + ' of ' + (slidesCount);
+    ///slideNumberElement.textContent = 'Slide #' + (currentSlide) + ' of ' + (slidesCount);
 
     // Remove All Active Classes
     removeAllActive();
@@ -189,8 +226,8 @@ function theChecker() {
     if (currentSlide == slidesCount) {
 
         // Add Disabled Class on Next Button
-        nextButton.classList.add('disabled');
-
+        //nextButton.classList.add('disabled');
+        currentSlide = 0;
     } else {
 
         // Remove Disabled Class From Next Button
@@ -199,7 +236,7 @@ function theChecker() {
     }
 
 }
-  
+
 // Remove All Active Classes From Images and Pagination Bullets
 function removeAllActive() {
 
@@ -211,10 +248,10 @@ function removeAllActive() {
     });
 
     // Loop Through Pagination Bullets
-    paginationsBullets.forEach(function (bullet) {
+    //paginationsBullets.forEach(function (bullet) {
 
-        bullet.classList.remove('active');
+        //bullet.classList.remove('active');
 
-    });
+    //});
 
 }
