@@ -1,16 +1,14 @@
 [Unit]
-Description=Chromium Kiosk
+Description=Player Service
 Wants=graphical.target
-After=graphical.target
 
 [Service]
 Environment=DISPLAY=:0.0
-ExecStart=/usr/bin/python /home/pi/standard_display/Player/backend/player.py
+ExecStart=/usr/bin/python3 /home/pi/standard_display/Player/backend/player.py
 Type=simple
-ExecStart=/bin/bash /home/pi/player.sh
-Restart=on-abort
+Restart=on-failure
 User=pi
-Group=pi
+Group=sudo
 
 [Install]
 WantedBy=graphical.target
