@@ -1,7 +1,7 @@
 {
     "type": "player",
     "player": {
-        "uuid": "5b57810f-2b7e-4e42-ad25-1965f7bc0860",
+        "uuid": "7a5cb053-8876-41da-a5e9-beada41e9351",
         "name": "Player-2",
         "description": "Test Player 2",
         "tags": "['player', 'iot']",
