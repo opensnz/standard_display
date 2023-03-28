@@ -9,7 +9,7 @@ os.environ["FRONTEND_DIR"] = "/home/pi/standard_display/Player/frontend/"
 os.environ["BACKEND_DIR"] = "/home/pi/standard_display/Player/backend/"
 # os.environ["FRONTEND_DIR"] = "C:/Users/Dev1/Desktop/Repository/standard_display/Player/frontend/"
 # os.environ["BACKEND_DIR"] = "C:/Users/Dev1/Desktop/Repository/standard_display/Player/backend/"
-os.environ["REMOTE_SERVER"] = "http://192.168.1.99:8000/"
+os.environ["REMOTE_SERVER"] = "http://192.168.4.167:8000/"
 WELCOME_HTML_PATH  = os.getenv("FRONTEND_DIR") + "welcome.html"
 INDEX_HTML_PATH    = os.getenv("FRONTEND_DIR") + "index.html"
 

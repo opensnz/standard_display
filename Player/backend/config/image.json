@@ -1,10 +1,9 @@
 {
     "type": "image",
     "image": [
-        "C:/Users/Dev1/Desktop/Repository/standard_display/Player/frontend/media/3e927e69-66f3-4530-a146-38042f17762e.jpg",
-        "C:/Users/Dev1/Desktop/Repository/standard_display/Player/frontend/media/c8986f67-6d50-4671-b000-875fd1fca4a8.jpg",
-        "C:/Users/Dev1/Desktop/Repository/standard_display/Player/frontend/media/b7dd3f81-d4cb-4fb8-946f-4a300824cef7.jpg",
-        "C:/Users/Dev1/Desktop/Repository/standard_display/Player/frontend/media/dbb892ea-538d-4f74-9c37-792f5dc4ff9d.jpg"
+        "/home/pi/standard_display/Player/frontend/media/1afadb73-e80d-4d46-b3e3-1e6bdef775c2.jpg",
+        "/home/pi/standard_display/Player/frontend/media/4fb91ada-8a16-4929-8247-75d75f92c206.jpg",
+        "/home/pi/standard_display/Player/frontend/media/1e2fda4a-8bd6-4a26-b59a-e97b058b2de4.jpg"
     ],
     "duration": 1000
 }

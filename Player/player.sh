@@ -33,11 +33,10 @@ sudo systemctl start player.service
 echo -e "Finished\n"
 
 
-sudo cp ./audio.service /lib/systemd/system/audio.service
-echo  "Start Service audio..."
-sudo chmod 644 /lib/systemd/system/audio.service
-chmod +x /home/pi/standard_display/Player/backend/player.py
+sudo cp ./pulseaudio.service /lib/systemd/system/pulseaudio.service
+echo  "Start Service pulseaudio..."
+sudo chmod 644 /lib/systemd/system/pulseaudio.service
 sudo systemctl daemon-reload
-sudo systemctl enable audio.service
-sudo systemctl start audio.service
+sudo systemctl --system enable pulseaudio.service
+sudo systemctl --system start pulseaudio.service
 echo -e "Finished\n"

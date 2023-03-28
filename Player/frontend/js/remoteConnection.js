@@ -1,4 +1,4 @@
-const BACKEND_REMOTE_SERVER = 'ws://192.168.1.99:8000/player/';
+const BACKEND_REMOTE_SERVER = 'ws://192.168.4.167:8000/player/';
 let UUID = '';
 let remoteSocket; 
 

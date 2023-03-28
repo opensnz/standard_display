@@ -1,6 +1,9 @@
 {
     "type": "playlist",
     "playlist": [
-        "C:/Users/hp/Desktop/Repository/standard_display/Player/frontend/media/806adf31-b9b8-4646-bccf-a7d28a81d6b2.mp4"
+        "/home/pi/standard_display/Player/frontend/media/3612a440-645e-4914-9343-997dc2e5236f.mp4",
+        "/home/pi/standard_display/Player/frontend/media/eb978421-e187-4179-9a18-b61103547a91.mp4",
+        "/home/pi/standard_display/Player/frontend/media/7e9ce848-1b4e-4ee4-ab43-8a63d7fdd425.mp4",
+        "/home/pi/standard_display/Player/frontend/media/5ef2cdc4-8e10-4d6a-ad8b-2bf480ac7f9c.mp4"
     ]
 }
