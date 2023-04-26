@@ -2,6 +2,7 @@
 
 # Install python dependencies
 sudo pip install paho-mqtt
+sudo pip install python-vlc
 sudo pip install screeninfo
 
 # Disable Low Voltage Warning
