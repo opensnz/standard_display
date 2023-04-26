@@ -3,8 +3,6 @@ Description=Player Service
 Wants=graphical.target
 
 [Service]
-Environment=DISPLAY=:0.0
-Environment=PULSE_SINK=alsa_output.platform-3f902000.hdmi.hdmi-stereo
 ExecStart=/usr/bin/python3 /home/pi/standard_display/Player/backend/player.py
 Type=simple
 Restart=on-failure

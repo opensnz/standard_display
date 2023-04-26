@@ -6,7 +6,7 @@ def download_playlist(data : dict) -> dict:
     for media in medias :
         filename = media["uuid"]
         extension = media["extension"]
-        path = os.getenv('FRONTEND_DIR') + "media/" + filename + extension
+        path = os.getenv('GUI_DIR') + "media/" + filename + extension
         # Download only if media not exists
         if not os.path.exists(path):
             response = requests.get(media["link"], allow_redirects=True)
@@ -25,7 +25,7 @@ def download_image(data : dict) -> dict:
     for media in medias :
         filename = media["uuid"]
         extension = media["extension"]
-        path = os.getenv('FRONTEND_DIR') + "media/" + filename + extension
+        path = os.getenv('GUI_DIR') + "media/" + filename + extension
         # Download only if media not exists
         if not os.path.exists(path):
             response = requests.get(media["link"], allow_redirects=True)
