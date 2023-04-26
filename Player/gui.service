@@ -7,7 +7,6 @@ Requires=mosquitto.service
 
 [Service]
 Environment=DISPLAY=:0.0
-Environment=PULSE_SINK=alsa_output.platform-3f902000.hdmi.hdmi-stereo
 ExecStart=sudo /usr/bin/python3 -u /home/pi/standard_display/Player/gui/gui.py
 Type=simple
 Restart=on-failure
