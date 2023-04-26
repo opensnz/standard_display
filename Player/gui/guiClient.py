@@ -63,6 +63,7 @@ class GuiClientClass:
         self.__mqtt_client.publish(MQTT_TOPIC_GUI_OUT, payload=message)
       
     def __msg_playlist_handling__(self, message : dict):
+        print(message)
         self.__guiPlayer.play_media_list(message["playlist"])
     
     def __msg_screenshot_handling__(self, message : dict):
