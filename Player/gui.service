@@ -7,7 +7,7 @@ Requires=mosquitto.service
 
 [Service]
 Environment=DISPLAY=:0.0
-ExecStart=sudo /usr/bin/python3 -u /home/pi/standard_display/Player/gui/gui.py
+ExecStart=/usr/bin/python3 /home/pi/standard_display/Player/gui/gui.py
 Type=simple
 Restart=on-failure
 User=pi

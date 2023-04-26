@@ -1,6 +1,9 @@
 import vlc
 import tkinter as tk
 import threading
+from sys import platform
+
+
 
 class GuiPlaylistClass():
     
@@ -21,9 +24,12 @@ class GuiPlayerClass(tk.Frame):
         tk.Frame.__init__(self, root, bg='black')
         self.root = root
         # Creating VLC player
-        self.instance : vlc.Instance = vlc.Instance()
+        self.instance : vlc.Instance = vlc.Instance("--no-xlib")
         self.player : vlc.MediaPlayer = vlc.MediaPlayer()
-        self.player.set_hwnd(self.winfo_id())
+        if platform == "linux" or platform == "linux2":
+            self.player.set_xwindow(self.winfo_id())
+        elif platform == "win32":
+            self.player.set_hwnd(self.winfo_id())
         self.player_manager = self.player.event_manager()
         self.player_manager.event_attach(vlc.EventType.MediaPlayerStopped,
                 self.callback_media_stopped, self.player)

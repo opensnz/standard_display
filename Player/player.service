@@ -5,7 +5,7 @@ StartLimitBurst=8640
 Requires=mosquitto.service
 
 [Service]
-ExecStart=sudo /usr/bin/python3 -u /home/pi/standard_display/Player/backend/player.py
+ExecStart=/usr/bin/python3 /home/pi/standard_display/Player/backend/player.py
 Type=simple
 Restart=on-failure
 User=pi

@@ -2,7 +2,7 @@ import websocket, threading
 import paho.mqtt.client as mqtt
 from modules.handler import Handler
 from modules.constants import *
-import json, time
+import json, time, os
 
 BACKEND_REMOTE_SERVER = 'ws://192.168.4.167:8000/player/'
 
@@ -26,9 +26,9 @@ class remoteClientClass:
     def __loop__(self):
         while True:
             self.__publish__(json.dumps({"type": "playlist", "playlist": [
-                                                "/home/pi/standard_display/Player/gui/media/3612a440-645e-4914-9343-997dc2e5236f.mp4", 
-                                                "/home/pi/standard_display/Player/gui/media/eb978421-e187-4179-9a18-b61103547a91.mp4", 
-                                                "/home/pi/standard_display/Player/gui/media/5ef2cdc4-8e10-4d6a-ad8b-2bf480ac7f9c.mp4"]}))
+                                                os.getenv('GUI_DIR') + "media/3612a440-645e-4914-9343-997dc2e5236f.mp4", 
+                                                os.getenv('GUI_DIR') + "media/eb978421-e187-4179-9a18-b61103547a91.mp4", 
+                                                os.getenv('GUI_DIR') + "media/5ef2cdc4-8e10-4d6a-ad8b-2bf480ac7f9c.mp4"]}))
             time.sleep(100)
             
     #####################################################################
