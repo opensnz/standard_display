@@ -21,11 +21,15 @@ class remoteClientClass:
         self.__mqtt_client.on_disconnect = self.__mqtt_on_disconnect__
         self.__mqtt_client.username_pw_set(MQTT_USERNAME, MQTT_PASSWORD)
         self.__mqtt_client.connect(MQTT_BROKER, MQTT_PORT)
-        self.__ws_run__()
+        #self.__ws_run__()
         
     def __loop__(self):
         while True:
-            time.sleep(3600)
+            self.__publish__(json.dumps({"type": "playlist", "playlist": [
+                                                "/home/pi/standard_display/Player/gui/media/3612a440-645e-4914-9343-997dc2e5236f.mp4", 
+                                                "/home/pi/standard_display/Player/gui/media/eb978421-e187-4179-9a18-b61103547a91.mp4", 
+                                                "/home/pi/standard_display/Player/gui/media/5ef2cdc4-8e10-4d6a-ad8b-2bf480ac7f9c.mp4"]}))
+            time.sleep(100)
             
     #####################################################################
         
@@ -79,11 +83,6 @@ class remoteClientClass:
     def __mqtt_on_connect__(self, client:mqtt.Client, userdata, flags, rc):
         print("MQTT_Client connected")
         client.subscribe(MQTT_TOPIC_GUI_OUT)
-        time.sleep(10)
-        self.__publish__(json.dumps({"type": "playlist", "playlist": [
-                                            "/home/pi/standard_display/Player/gui/media/3612a440-645e-4914-9343-997dc2e5236f.mp4", 
-                                            "/home/pi/standard_display/Player/gui/media/eb978421-e187-4179-9a18-b61103547a91.mp4", 
-                                            "/home/pi/standard_display/Player/gui/media/5ef2cdc4-8e10-4d6a-ad8b-2bf480ac7f9c.mp4"]}))
 
 
     def __mqtt_on_disconnect__(self, client:mqtt.Client, userdata, rc):
