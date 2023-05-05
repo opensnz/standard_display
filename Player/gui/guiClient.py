@@ -31,7 +31,7 @@ class GuiClientClass:
         except:
             pass
     
-    def __get_current_playlist__(self) -> dict|None:
+    def __get_current_playlist__(self) -> dict:
         path = os.getenv('BACKEND_DIR') + "config/playlist.json"
         if os.path.exists(path):
             try :

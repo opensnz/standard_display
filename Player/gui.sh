@@ -1,6 +1,7 @@
 #################### Project dependencies installation #####################
 
 # Install python dependencies
+sudo apt install python3-pil.imagetk -y
 sudo pip install paho-mqtt
 sudo pip install python-vlc
 sudo pip install screeninfo
