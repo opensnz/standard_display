@@ -1,9 +1,0 @@
-{
-    "type": "image",
-    "image": [
-        "/home/pi/standard_display/Player/frontend/media/1afadb73-e80d-4d46-b3e3-1e6bdef775c2.jpg",
-        "/home/pi/standard_display/Player/frontend/media/4fb91ada-8a16-4929-8247-75d75f92c206.jpg",
-        "/home/pi/standard_display/Player/frontend/media/1e2fda4a-8bd6-4a26-b59a-e97b058b2de4.jpg"
-    ],
-    "duration": 1000
-}
