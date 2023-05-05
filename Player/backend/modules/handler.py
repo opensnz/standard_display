@@ -4,7 +4,7 @@ import subprocess
 from PIL import ImageGrab
 from modules.telemetry import Telemetry
 from modules.downloader import *
-from constants import *
+from modules.constants import *
 
 
 class Handler():
