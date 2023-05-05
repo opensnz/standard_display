@@ -13,21 +13,17 @@ class GuiWelcomeClass(tk.Frame):
 
         self.image = Image.open("./media/icon.jpg")
         self.image = self.image.resize((50, 50))
-        # self.photo = ImageTk.PhotoImage(self.image)
-        # self.photo = ImageTk.PhotoImage(self.image)
-        self.photo = tk.PhotoImage("./media/icon.jpg")
+        self.photo = ImageTk.PhotoImage(self.image)
 
         
         self.center_frame = tk.Frame(self.root)
         self.center_frame.pack(expand=True)
 
-        self.image_label = tk.Label(self.center_frame, image= self.photo)
+        self.image_label = tk.Label(self.center_frame, image=self.photo)
         self.image_label.pack(side=tk.LEFT, padx=10)
-        #self.image_label.pack(pady=10, padx=10, anchor=tk.N, side=tk.TOP)
         
         self.title_label = tk.Label(self.center_frame, text="OpenSignage", font=("Arial", 15, 'bold'))
         self.title_label.pack(side=tk.LEFT, padx=10)
-        #self.title_label .pack(pady=10, padx=10, anchor=tk.N, side=tk.TOP)
 
         
         
