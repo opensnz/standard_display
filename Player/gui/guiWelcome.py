@@ -11,7 +11,7 @@ class GuiWelcomeClass(tk.Frame):
         self.root.bind("<F11>", self.toggleFullScreen)
         self.root.bind("<Escape>", self.quitFullScreen)
 
-        self.image = Image.open("C:/Users/Dev1/tkinter/icon.jpg")
+        self.image = Image.open("./media/icon.jpg")
         self.image = self.image.resize((50, 50))
         self.photo = ImageTk.PhotoImage(self.image)
 
