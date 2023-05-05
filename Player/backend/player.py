@@ -12,13 +12,13 @@ elif platform == "win32":
     os.environ["GUI_DIR"] = "C:/Users/Dev1/Desktop/standard_display/Player/gui/"
     os.environ["BACKEND_DIR"] = "C:/Users/Dev1/Desktop/standard_display/Player/backend/"
 
-def get_uiid() -> str:
+def get_player_uiid() -> str:
     path = os.getenv('BACKEND_DIR') + "config/player.json"
     if os.path.exists(path):
         try :
             with open(path, "r") as file:
                 data = json.load(file)
-                if data["player"]["uuid"] != "" and data["player"]["activated"] == True:
+                if data["player"]["uuid"] != "":
                     return data["player"]["uuid"]
             return ""
         except:
@@ -33,7 +33,7 @@ def handler(signum, frame):
 
 if __name__ == "__main__":
     signal.signal(signal.SIGINT, handler)
-    remoteClient = remoteClientClass(get_uiid())
+    remoteClient = remoteClientClass(get_player_uiid())
     remoteClient.main()
 
 

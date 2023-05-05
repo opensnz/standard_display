@@ -21,7 +21,8 @@ class remoteClientClass:
         self.__mqtt_client.on_disconnect = self.__mqtt_on_disconnect__
         self.__mqtt_client.username_pw_set(MQTT_USERNAME, MQTT_PASSWORD)
         self.__mqtt_client.connect(MQTT_BROKER, MQTT_PORT)
-        #self.__ws_run__()
+        if self.__uiid != "":
+            self.__ws_run__()
         
     def __loop__(self):
         while True:
@@ -39,7 +40,8 @@ class remoteClientClass:
     def __ws_on_message__(self, ws, message):
         print("message : ", message)
         response = self.__handler.handle(message)
-        print("response : ", response)
+        
+        
         self.__publish__(response)
         
         
@@ -67,7 +69,7 @@ class remoteClientClass:
         
     def __ws_send__(self, message : str):
         self.__socket.send(message)
-        
+    
 
     #######################################################################################
      
@@ -77,8 +79,12 @@ class remoteClientClass:
         topic = message.topic
         if topic == MQTT_TOPIC_GUI_OUT:
             data = json.loads((b''+message.payload).decode())
-            print(data)
-            # Send to remote server
+            response = self.__handler.handle(json.dumps(data))
+            response_dict = json.loads(response)
+            if response_dict["type"] == "player":
+                self.__msg_player_handling__(response_dict)
+            self.__publish__(response)
+            
 
     def __mqtt_on_connect__(self, client:mqtt.Client, userdata, flags, rc):
         print("MQTT_Client connected")
@@ -94,6 +100,12 @@ class remoteClientClass:
         """Publish Message"""
         self.__mqtt_client.publish(MQTT_TOPIC_GUI_IN, payload=message)
         
+    
+    def __msg_player_handling__(self, message : dict):
+        self.__uiid = message["player"]["uuid"]
+        self.__ws_run__()
+        
+    
     
     ################################################################################
      

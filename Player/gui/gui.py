@@ -1,17 +1,38 @@
 import tkinter as tk
-import vlc
-import screeninfo
-import threading
+from monitor import *
 from guiPlayer import GuiPlayerClass
+from guiWelcome import GuiWelcomeClass
 from guiClient import GuiClientClass
+import os, json
+from sys import platform
 
-def get_primary_monitor() -> screeninfo.Monitor:
-    monitors = screeninfo.get_monitors()
-    for monitor in monitors:
-        if monitor.is_primary == True:
-            return monitor
-    return screeninfo.Monitor(0,0,0,0)
 
+if platform == "linux" or platform == "linux2":
+    os.environ["GUI_DIR"] = "/home/pi/standard_display/Player/gui/"
+    os.environ["BACKEND_DIR"] = "/home/pi/standard_display/Player/backend/"
+elif platform == "win32":
+    os.environ["GUI_DIR"] = "C:/Users/Dev1/Desktop/standard_display/Player/gui/"
+    os.environ["BACKEND_DIR"] = "C:/Users/Dev1/Desktop/standard_display/Player/backend/"
+
+
+
+
+########################################################################
+
+
+def is_player_activate() -> bool:
+    path = os.getenv('BACKEND_DIR') + "config/player.json"
+    if os.path.exists(path):
+        try :
+            with open(path, "r") as file:
+                data = json.load(file)
+                if data["player"]["uuid"] != "" and data["player"]["activated"] == True:
+                    return True
+            return False
+        except:
+            return False
+    else :
+        return False
 
 
 
@@ -27,14 +48,18 @@ video2 = r"C:/Users/Dev1/Desktop/standard_display/Player/frontend/gui/video2.mp4
 
 if __name__ == '__main__':
     root = tk.Tk()
-    root.geometry("600x400+0+0")
-    #root.attributes('-fullscreen', True)
-    guiPlayer = GuiPlayerClass(root)
-    monitor : screeninfo.Monitor = get_primary_monitor()
-    guiPlayer.place(x=0, y=0, width=monitor.width/4, height=monitor.height/4)
-    #guiPlayer.play_media_list([video2, video1])
-    # screen.play_media(video1)
-    # screen.play_media(video2)
-    guiClient = GuiClientClass(guiPlayer)
-    guiClient.run()
+    root.attributes('-fullscreen', True)
+    
+    if is_player_activate() :
+        guiPlayer = GuiPlayerClass(root)
+        monitor : screeninfo.Monitor = get_primary_monitor()
+        guiPlayer.place(x=0, y=0, width=monitor.width, height=monitor.height)
+        guiClient = GuiClientClass(guiPlayer=guiPlayer)
+    else :
+        print("Welcome Page")
+        guiWelcome = GuiWelcomeClass(root)
+        guiClient = GuiClientClass(guiWelcome=guiWelcome)
+        #root.bind("<Configure>", guiWelcome.resize_label)
+        guiWelcome.pack(fill='both', expand=True)
+    guiClient.run() 
     root.mainloop()

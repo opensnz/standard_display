@@ -4,20 +4,21 @@ import subprocess
 from PIL import ImageGrab
 from modules.telemetry import Telemetry
 from modules.downloader import *
+from constants import *
 
 
 class Handler():
 
     def __init__(self):
         self.__mapping__ = {
-            "player": Handler._player,
-            "activation": Handler._activation,
-            "telemetry": Handler._telemetry,
-            "playlist": Handler._playlist,
-            "screenshot": Handler._screenshot,
-            "reboot": Handler._reboot,
-            "power": Handler._power,
-            "image": Handler._image,
+            TYPE.PLAYER : Handler._player,
+            TYPE.ACTIVATION: Handler._activation,
+            TYPE.TELEMETRY: Handler._telemetry,
+            TYPE.PLAYLIST: Handler._playlist,
+            TYPE.SCREENSHOT: Handler._screenshot,
+            TYPE.REBOOT: Handler._reboot,
+            TYPE.POWER: Handler._power,
+            TYPE.IMAGE: Handler._image,
         }
 
 
@@ -30,7 +31,7 @@ class Handler():
             return self.__error__()
     
     def __error__(self) -> str:
-        return json.dumps({"type" : "error", "error":"message not handled"})
+        return json.dumps({"type" : TYPE.ERROR, TYPE.ERROR:"message not handled"})
 
     def _player(self, data : dict) -> str:
         path = os.getenv('BACKEND_DIR') + "config/player.json"
@@ -54,10 +55,13 @@ class Handler():
     def _activation(self, data : dict) -> str:
         path = os.getenv('BACKEND_DIR') + "config/player.json"
         player = data.pop(data["type"])
-        data["type"] = "player"
-        data["player"] = player
+        data["type"] = TYPE.PLAYER
+        data[TYPE.PLAYER] = player
         with open(path, "w") as file:
             file.write(json.dumps(data, indent=4))
+        data.pop(data["type"])
+        data["type"] = TYPE.ACTIVATION
+        data[TYPE.ACTIVATION] = player
         return json.dumps(data)
 
 
