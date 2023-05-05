@@ -1,6 +1,7 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 import urllib.request
+import os
 
 
 class GuiWelcomeClass(tk.Frame):
@@ -11,7 +12,7 @@ class GuiWelcomeClass(tk.Frame):
         self.root.bind("<F11>", self.toggleFullScreen)
         self.root.bind("<Escape>", self.quitFullScreen)
 
-        self.image = Image.open("./media/icon.jpg")
+        self.image = Image.open(os.environ["GUI_DIR"]+"media/icon.jpg")
         self.image = self.image.resize((50, 50))
         self.photo = ImageTk.PhotoImage(self.image)
 
