@@ -40,11 +40,6 @@ def is_player_activate() -> bool:
 ########################################################################        
     
 
-video1 = r"C:/Users/Dev1/Desktop/standard_display/Player/frontend/gui/video1.mp4"
-video2 = r"C:/Users/Dev1/Desktop/standard_display/Player/frontend/gui/video2.mp4"
-
-
-
 
 if __name__ == '__main__':
     root = tk.Tk()
