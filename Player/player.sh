@@ -6,11 +6,7 @@ sudo pip install pillow
 sudo pip install paho-mqtt
 sudo pip install websocket-client
 
-# Disable Low Voltage Warning
-########## Edit config file
-#sudo nano /boot/config.txt
-########## Add this line
-#avoid_warnings=1
+
 
 ############# Player Service Installation ############
 

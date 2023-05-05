@@ -1,16 +1,18 @@
 #################### Project dependencies installation #####################
 
+sudo apt remove lxplug-ptbatt -y
+# Disable Low Voltage Warning
+########## Edit config file
+#sudo nano /boot/config.txt
+########## Add this line
+#avoid_warnings=1
+
 # Install python dependencies
 sudo apt install python3-pil.imagetk -y
 sudo pip install paho-mqtt
 sudo pip install python-vlc
 sudo pip install screeninfo
 
-# Disable Low Voltage Warning
-########## Edit config file
-#sudo nano /boot/config.txt
-########## Add this line
-#avoid_warnings=1
 
 ############# GUI Service Installation ############
 
