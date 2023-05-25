@@ -16,7 +16,7 @@ sudo apt install mosquitto -y
 
 # 3. Create password file
 #sudo touch /etc/mosquitto/passwd
-sudo cp ./passwd /etc/mosquitto/passwd
+#sudo cp ./passwd /etc/mosquitto/passwd
 
 # 4. Generate password for clients (username, password must be modified)
 #sudo mosquitto_passwd -b /etc/mosquitto/passwd username password
