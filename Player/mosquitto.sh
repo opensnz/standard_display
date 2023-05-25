@@ -10,9 +10,9 @@ sudo apt install mosquitto -y
 ##### specify password file (paste these lines in mosquitto.conf)
 #password_file /etc/mosquitto/passwd
 #listener 1883
-sudo chmod a+w /etc/mosquitto/mosquitto.conf
-sudo echo "password_file /etc/mosquitto/passwd" >> /etc/mosquitto/mosquitto.conf
-sudo echo "listener 1883" >> /etc/mosquitto/mosquitto.conf
+#sudo chmod a+w /etc/mosquitto/mosquitto.conf
+#sudo echo "password_file /etc/mosquitto/passwd" >> /etc/mosquitto/mosquitto.conf
+#sudo echo "listener 1883" >> /etc/mosquitto/mosquitto.conf
 
 # 3. Create password file
 #sudo touch /etc/mosquitto/passwd
