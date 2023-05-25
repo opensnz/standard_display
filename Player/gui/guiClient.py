@@ -100,6 +100,7 @@ class GuiClientClass:
     
     def __msg_playlist_handling__(self, message : dict):
         if self.__guiPlayer is not None:
+            print(message)
             self.__guiPlayer.play_media_list(message["playlist"])
             
     def __msg_image_handling__(self, message : dict):
