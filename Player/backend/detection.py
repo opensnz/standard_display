@@ -12,13 +12,13 @@ elif platform == "win32":
 
 
 classNames = []
-classFile = os.getenv["GUI_DIR"] + "config/coco.names"
-FORM_FILE = os.getenv["GUI_DIR"] + "config/form.json"
+classFile = os.getenv("BACKEND_DIR") + "config/coco.names"
+FORM_FILE = os.getenv("BACKEND_DIR") + "config/form.json"
 with open(classFile,"rt") as f:
     classNames = f.read().rstrip("\n").split("\n")
 
-configPath = os.getenv["GUI_DIR"] + "config/ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt"
-weightsPath = os.getenv["GUI_DIR"] + "config/frozen_inference_graph.pb"
+configPath = os.getenv("BACKEND_DIR") + "config/ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt"
+weightsPath = os.getenv("BACKEND_DIR") + "config/frozen_inference_graph.pb"
 
 net = cv2.dnn_DetectionModel(weightsPath,configPath)
 net.setInputSize(320,320)
@@ -68,5 +68,5 @@ if __name__ == "__main__":
                     payload = json.load(file)
                 if payload is not None:
                     mqtt_client.publish(topic=MQTT_TOPIC_GUI_IN, payload=json.dumps(payload))
-                    time.sleep(300)
+                    time.sleep(10)
         time.sleep(1)
