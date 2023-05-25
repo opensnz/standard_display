@@ -5,7 +5,7 @@
         "name": "TestPlayer",
         "description": "",
         "tags": "['player', 'iot', 'test']",
-        "activated": false,
+        "activated": true,
         "created_at": "2023-05-05T09:51:15.597273Z",
         "updated_at": "2023-05-05T09:51:31.974054Z",
         "passcode": 197189

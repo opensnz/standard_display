@@ -19,6 +19,7 @@ class Handler():
             TYPE.REBOOT: Handler._reboot,
             TYPE.POWER: Handler._power,
             TYPE.IMAGE: Handler._image,
+            TYPE.FORM : Handler._form
         }
 
 
@@ -106,3 +107,7 @@ class Handler():
         path = os.getenv('BACKEND_DIR') + "config/image.json"
         open(path, 'w').write(json.dumps(response, indent=4))
         return json.dumps(response)
+    
+    
+    def _form(self, data : dict) -> str:
+        return json.dumps(data)

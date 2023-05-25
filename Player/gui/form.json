@@ -1,0 +1,14 @@
+{
+    "type": "form",
+    "form": [
+        {
+            "label":"name"
+        },
+        {
+            "label":"email"
+        },
+        {
+            "label":"telephone"
+        }
+    ]
+}

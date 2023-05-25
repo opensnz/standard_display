@@ -17,4 +17,5 @@ class TYPE(enumerate):
     REBOOT = "reboot"
     POWER = "power"
     IMAGE = "image"
+    FORM = "form"
     ERROR = "error"

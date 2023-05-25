@@ -1,9 +1,12 @@
 from guiPlayer import GuiPlayerClass
 import paho.mqtt.client as mqtt
 from constants import *
-import json, time, os
+import json, time, os, threading
 from guiWelcome import GuiWelcomeClass
+from guiForm import GuiFormClass
+from tkinter import ttk
 from monitor import *
+from typing import *
 
 BACKEND_LOCAL_SERVER = "ws://localhost:8080"
 
@@ -14,6 +17,7 @@ class GuiClientClass:
         self.__guiPlayer : GuiPlayerClass =  guiPlayer
         self.__guiWelcome : GuiWelcomeClass =  guiWelcome
         self.__mqtt_client = mqtt.Client(transport="tcp",client_id="gui")
+        self.__guiForm : GuiFormClass = None
         
     def __setup__(self):
         self.__mqtt_client.on_connect    = self.__mqtt_on_connect__
@@ -59,6 +63,8 @@ class GuiClientClass:
                 self.__msg_playlist_handling__(data)
             elif data["type"] == TYPE.IMAGE:
                 self.__msg_image_handling__(data)
+            elif data["type"] == TYPE.FORM:
+                self.__msg_form_handling__(data)
 
     def __mqtt_on_connect__(self, client:mqtt.Client, userdata, flags, rc):
         print("MQTT_Client connected")
@@ -98,3 +104,36 @@ class GuiClientClass:
             
     def __msg_image_handling__(self, message : dict):
         pass
+    
+    def __msg_form_handling__(self, message : dict):
+        if self.__guiPlayer is None :
+            return
+        if self.__guiForm is not None:
+            self.__guiForm.destroy()
+        self.__guiForm = GuiFormClass(self.__guiPlayer.root, message)
+        self.__guiForm.display_confirm(self.__msg_form_button_ok__, self.__msg_form_button_cancel__)
+        
+        
+    def __msg_form_button_submit__(self):
+        print("In callback")
+        keys = self.__guiForm.inputs.keys()
+        for key in keys:
+            item = self.__guiForm.inputs.get(key, ttk.Entry(self.__guiForm, style="Rounded.TEntry"))
+            print(item.get())
+
+        self.__guiForm.destroy()
+        self.__guiForm = None
+        self.__guiPlayer.replay_media_list()
+        print("End callback")
+        
+        
+    def __msg_form_button_cancel__(self):
+        print("Cancel")
+        self.__guiForm.destroy()
+        self.__guiForm = None
+
+
+    def __msg_form_button_ok__(self):
+        print("Ok")
+        self.__guiPlayer.pause_media_list()
+        self.__guiForm.display_form(self.__msg_form_button_submit__)

@@ -53,6 +53,14 @@ class GuiPlayerClass(tk.Frame):
         self.media = vlc.Media(source)
         self.player.set_media(self.media)
         self.player.play()
+        
+    def pause_media_list(self):
+        print("Pause Media List: ")
+        self.player.pause()
+        
+    def replay_media_list(self):
+        print("Replay Media List: ")
+        self.player.pause()
      
     def play_media_list(self, sources : list):
         # Function to start player from given sources

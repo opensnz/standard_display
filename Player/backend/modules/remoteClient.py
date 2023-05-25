@@ -97,7 +97,7 @@ class remoteClientClass:
     
     
     def __publish__(self, message:str):
-        """Publish Message"""
+        """MQTT Publish Message"""
         self.__mqtt_client.publish(MQTT_TOPIC_GUI_IN, payload=message)
         
     
