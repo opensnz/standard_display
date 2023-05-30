@@ -29,10 +29,12 @@ class GuiFormClass(tk.Frame):
         self.__callback_submit__ = callback_submit
         self.place(x=0, y=0, width=monitor.width, height=monitor.height)
         parameters = {
-            "row" : 0,
-            "padx" : 10,
-            "pady" : 5
+            "row" : 1,
+            "padx" : 20,
+            "pady" : 20
         }
+        label = ttk.Label(self, text="Veuillez remplir ce formulaire")
+        label.grid(row=0, columnspan=2, padx=20, pady=20)
         for field in self.__form[TYPE.FORM]:
             parameters["text"] = field["label"]
             (label, entry) = self.__add_label_and_entry__(parameters)
@@ -52,18 +54,20 @@ class GuiFormClass(tk.Frame):
         self.__callback_cancel__ = callback_cancel
         
         self.place(x=3*monitor.width/8, y=3*monitor.height/8, width=monitor.width/4, height=monitor.height/4)
-        self.label = ttk.Label(self, text="TTTTTTTT?")
+        self.label = ttk.Label(self, text="Notre produit vous intêresse-t-il ?")
         self.label.place(relx=0.5, rely=0.1, anchor='center')
-        
+        button_width1 = 10  
+        button_height1 = 2 
         style_cancel = ttk.Style()
-        style_cancel.configure("Cancel.TButton", foreground="white", background="red", font=('Helvetica', 12))
+        style_cancel.configure("Cancel.TButton", foreground="white", background="red", font=('Helvetica', 12), width=button_width1, height=button_height1)
         self.button_cancel = ttk.Button(self, text="Cancel", command=self.__cancel__, style="Cancel.TButton")
-        self.button_cancel.pack(side=tk.LEFT, padx=80)
-
+        self.button_cancel.pack(side=tk.LEFT, padx=70)
+        button_width = 10  
+        button_height = 2  
         style_ok = ttk.Style()
-        style_ok.configure("OK.TButton", foreground="white", background="blue", font=('Helvetica', 12))
+        style_ok.configure("OK.TButton", foreground="white", background="blue", font=('Helvetica', 12), width=button_width, height=button_height)
         self.button_ok = ttk.Button(self, text="OK", command=self.__ok__, style="OK.TButton")
-        self.button_ok.pack(side=tk.RIGHT, padx=80)
+        self.button_ok.pack(side=tk.RIGHT, padx=70)
     
 
         self.lift()
@@ -73,9 +77,7 @@ class GuiFormClass(tk.Frame):
         
     def __submit__(self):
         if self.__callback_submit__ is not None:
-            print("Before callback")
             self.__callback_submit__()
-            print("After callback")
         
     
     def __ok__(self):
@@ -91,16 +93,19 @@ class GuiFormClass(tk.Frame):
             self.__callback_cancel__()
     
 
-    def __add_label_and_entry__(self, parameters:dict)->Tuple[ttk.Label, ttk.Entry]:
-        # Create form fields
+    def __add_label_and_entry__(self, parameters: dict) -> Tuple[ttk.Label, ttk.Entry]:
         label = ttk.Label(self, text=parameters["text"])
-        label.grid(row=parameters["row"], column=0, padx=parameters["padx"], pady=parameters["pady"])
+        label.grid(row=parameters["row"], column=0, padx=parameters["padx"], pady=parameters["pady"], sticky="e")
         entry = ttk.Entry(self, style="Rounded.TEntry")
-        entry.grid(row=parameters["row"], column=1, padx=parameters["padx"], pady=parameters["pady"])
+        entry.grid(row=parameters["row"], column=1, padx=parameters["padx"], pady=parameters["pady"], sticky="w")
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_columnconfigure(1, weight=1)
         return (label, entry)
 
+  
     def __add_button__(self, parameters:dict)->ttk.Button:
         # Create button
         button = ttk.Button(self, text=parameters["text"], command=parameters["callback"])
         button.grid(row=parameters["row"], columnspan=2, padx=10, pady=10)
+        button.place(relx=0.5, rely=0.25, anchor='center')
         return button

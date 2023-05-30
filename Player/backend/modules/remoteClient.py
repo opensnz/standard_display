@@ -34,10 +34,7 @@ class remoteClientClass:
         print("Remote connexion openned")
         
     def __ws_on_message__(self, ws, message):
-        print("message : ", message)
         response = self.__handler.handle(message)
-        
-        
         self.__publish__(response)
         
         
@@ -64,7 +61,8 @@ class remoteClientClass:
         self.__ws_run__()
         
     def __ws_send__(self, message : str):
-        self.__socket.send(message)
+        if self.__socket is not None:
+            self.__socket.send(message)
     
 
     #######################################################################################
@@ -77,9 +75,12 @@ class remoteClientClass:
             data = json.loads((b''+message.payload).decode())
             response = self.__handler.handle(json.dumps(data))
             response_dict = json.loads(response)
-            if response_dict["type"] == "player":
+            if response_dict["type"] == TYPE.PLAYER:
                 self.__msg_player_handling__(response_dict)
-            self.__publish__(response)
+                self.__publish__(response)
+            elif response_dict["type"] == TYPE.FORM:
+                self.__ws_send__(response)
+                
             
 
     def __mqtt_on_connect__(self, client:mqtt.Client, userdata, flags, rc):

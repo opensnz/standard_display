@@ -100,7 +100,6 @@ class GuiClientClass:
     
     def __msg_playlist_handling__(self, message : dict):
         if self.__guiPlayer is not None:
-            print(message)
             self.__guiPlayer.play_media_list(message["playlist"])
             
     def __msg_image_handling__(self, message : dict):
@@ -116,25 +115,28 @@ class GuiClientClass:
         
         
     def __msg_form_button_submit__(self):
-        print("In callback")
         keys = self.__guiForm.inputs.keys()
+        message = {"type" : "form"}
+        form_data = []
         for key in keys:
             item = self.__guiForm.inputs.get(key, ttk.Entry(self.__guiForm, style="Rounded.TEntry"))
-            print(item.get())
-
+            answer = {}
+            answer["label"] = key
+            answer["input"] = item.get()
+            form_data.append(answer)
+        message["form"] = form_data
         self.__guiForm.destroy()
         self.__guiForm = None
         self.__guiPlayer.replay_media_list()
-        print("End callback")
+        self.__publish__(json.dumps(message))
         
         
     def __msg_form_button_cancel__(self):
-        print("Cancel")
         self.__guiForm.destroy()
         self.__guiForm = None
 
 
     def __msg_form_button_ok__(self):
-        print("Ok")
         self.__guiPlayer.pause_media_list()
         self.__guiForm.display_form(self.__msg_form_button_submit__)
+        
