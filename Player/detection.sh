@@ -3,6 +3,7 @@
 # Install python dependencies
 sudo apt install libopencv-dev python3-opencv
 sudo pip install paho-mqtt
+sudo pip install -U numpy
 
 
 
