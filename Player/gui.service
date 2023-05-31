@@ -12,7 +12,7 @@ ExecStart=/usr/bin/python3 /home/pi/standard_display/Player/gui/gui.py
 Type=simple
 Restart=on-failure    
 User=pi
-Group=sudo v bv
+Group=sudo
 
 [Install]
 WantedBy=graphical.target
