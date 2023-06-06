@@ -7,6 +7,8 @@ sudo pip install -U numpy
 
 
 
+
+
 ############# Detection Service Installation ############
 
 sudo cp ./detection.service /lib/systemd/system/detection.service

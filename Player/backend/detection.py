@@ -69,4 +69,4 @@ if __name__ == "__main__":
                 if payload is not None:
                     mqtt_client.publish(topic=MQTT_TOPIC_GUI_IN, payload=json.dumps(payload))
                     time.sleep(10)
-        time.sleep(1)
+        time.sleep(5)

@@ -27,6 +27,10 @@ class GuiPlayerClass(tk.Frame):
         self.instance : vlc.Instance = vlc.Instance("--no-xlib")
         self.player : vlc.MediaPlayer = vlc.MediaPlayer()
         if platform == "linux" or platform == "linux2":
+            from ctypes import CDLL
+            from ctypes.util import find_library
+            x11 = CDLL(find_library('X11'))
+            x11.XInitThreads()
             self.player.set_xwindow(self.winfo_id())
         elif platform == "win32":
             self.player.set_hwnd(self.winfo_id())

@@ -125,14 +125,16 @@ class GuiClientClass:
             answer["input"] = item.get()
             form_data.append(answer)
         message["form"] = form_data
-        self.__guiForm.destroy()
+        if self.__guiForm is not None:
+            self.__guiForm.destroy()
         self.__guiForm = None
         self.__guiPlayer.replay_media_list()
         self.__publish__(json.dumps(message))
         
         
     def __msg_form_button_cancel__(self):
-        self.__guiForm.destroy()
+        if self.__guiForm is not None:
+            self.__guiForm.destroy()
         self.__guiForm = None
 
 
