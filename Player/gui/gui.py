@@ -15,8 +15,6 @@ elif platform == "win32":
     os.environ["BACKEND_DIR"] = "C:/Users/Dev1/Desktop/standard_display/Player/backend/"
 
 
-
-
 ########################################################################
 
 
@@ -35,11 +33,8 @@ def is_player_activate() -> bool:
         return False
 
 
-
-
 ########################################################################        
     
-
 
 if __name__ == '__main__':
     root = tk.Tk()
